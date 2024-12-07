@@ -5,7 +5,6 @@ const app = express();
 const port = process.env.PORT || 9000;
 require("dotenv").config();
 
-// Use CORS middleware
 app.use(cors());
 
 // Middleware to parse JSON bodies
