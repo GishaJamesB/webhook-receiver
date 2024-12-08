@@ -3,6 +3,8 @@ const cors = require("cors");
 const { CosmosClient } = require("@azure/cosmos");
 const app = express();
 const port = process.env.PORT || 9000;
+
+const path = require("path");
 require("dotenv").config();
 
 app.use(cors());
