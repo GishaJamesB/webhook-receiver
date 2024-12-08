@@ -20,9 +20,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Documents</h1>
+        <h1>Event payloads</h1>
         {documents.map((doc, index) => (
-          <pre>{JSON.stringify(doc, null, 2)}</pre>
+          <div key={index} className="document">
+            <pre>{JSON.stringify(doc.webhook_payload, null, 2)}</pre>
+          </div>
         ))}
       </header>
     </div>

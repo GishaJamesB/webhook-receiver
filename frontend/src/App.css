@@ -18,6 +18,22 @@ h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
 }
+
+.document {
+  background: #61dafb;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left;
+  width: 80%;
+  max-width: 600px;
+  color: #282c34;
+  border-bottom: 2px solid #282c34; /* Add a bottom border */
+}
+
+.document:not(:last-child) {
+  border-bottom: 2px solid #282c34; /* Add a bottom border to all except the last document */
+}
 pre {
   margin: 0;
   white-space: pre-wrap;
