@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - webhook-receiver-p
+name: Deploy API and React App to Azure - webhook-receiver-p
 
 on:
   push:
@@ -16,21 +16,40 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Build the React frontend
+      - name: Setup Node.js for Frontend
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+
+      - name: Install Frontend Dependencies
+        working-directory: ./frontend
+        run: npm install
+
+      - name: Build React Frontend
+        working-directory: ./frontend
+        run: npm run build
+
+      # Deploy backend (including frontend build) to Azure
+
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
 
       - name: npm install, build, and test
+        working-directory: ./backend
         run: |
           npm install
           npm run build --if-present
           npm run test --if-present
 
       - name: Zip artifact for deployment
+        working-directory: ./backend
         run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
+        working-directory: ./backend
         uses: actions/upload-artifact@v4
         with:
           name: node-app

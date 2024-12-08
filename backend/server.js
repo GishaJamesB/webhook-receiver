@@ -17,6 +17,8 @@ const client = new CosmosClient({ endpoint, key });
 const databaseId = process.env.DATABASE_ID;
 const containerId = process.env.CONTAINER_ID;
 
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
@@ -68,6 +70,11 @@ app.get("/documents", async (req, res) => {
     console.error(error);
     res.status(500).send("Error reading documents");
   }
+});
+
+// Catch-all route for React frontend
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
 });
 
 app.listen(port, () => {
