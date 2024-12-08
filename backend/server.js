@@ -19,10 +19,6 @@ const containerId = process.env.CONTAINER_ID;
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
 // Dynamic POST endpoint to handle document-related requests
 app.post("/:action/:slug", async (req, res) => {
   const { action, slug } = req.params;
