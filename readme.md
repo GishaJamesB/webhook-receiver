@@ -1,4 +1,4 @@
-# Beceptor Project
+# Webhook Receiver Project
 
 This project contains both the backend and frontend code for the Beceptor application. The backend is built with Node.js and Express, while the frontend is built with React. The project also includes configuration for deploying to Azure using GitHub Actions.
 

@@ -7,8 +7,9 @@ function App() {
 
   useEffect(() => {
     // Fetch data from the /documents endpoint
+    // const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:9000";
     axios
-      .get("http://localhost:9000/documents")
+      .get(`/documents`)
       .then((response) => {
         setDocuments(response.data);
       })
